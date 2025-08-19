@@ -1,0 +1,9 @@
+@import 'tailwindcss';
+@import 'tailwindcss/preflight';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  body {
+    font-family: 'Nunito', ui-sans-serif, system-ui, sans-serif;
+  }
+}

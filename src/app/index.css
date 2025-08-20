@@ -2,8 +2,21 @@
 @import 'tailwindcss/preflight';
 @import 'tailwindcss/utilities';
 
+:root {
+  /* sizes */
+  --padding-base: 30px;
+}
+
 @layer base {
   body {
     font-family: 'Nunito', ui-sans-serif, system-ui, sans-serif;
   }
+}
+
+.icon {
+  @apply size-[30px];
+}
+
+.pd-base {
+  padding: var(--padding-base);
 }

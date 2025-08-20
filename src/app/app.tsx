@@ -1,7 +1,8 @@
 import './index.css';
+import { Router } from './router';
 
 function App() {
-  return <div>Forms</div>;
+  return <Router />;
 }
 
 export default App;

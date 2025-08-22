@@ -4,19 +4,88 @@
 
 :root {
   /* sizes */
-  --padding-base: 30px;
+  --padding-base: 8px;
+
+  /* colors */
+  --bg-color-gradient:
+    radial-gradient(at 88% 9%, #032cfc 0px, transparent 50%),
+    radial-gradient(
+      at 17.822922947156364% 69.56168845642227%,
+      #4b84bd 0px,
+      transparent 50%
+    ),
+    radial-gradient(
+      at 80.29639774142927% 63.536161276287686%,
+      #4dd4ba 0px,
+      transparent 50%
+    ),
+    radial-gradient(
+        at 18.8711356114898% 22.087837946270955%,
+        #a2e0d1 0px,
+        transparent 50%
+      )
+      #ffffff;
 }
 
-@layer base {
-  body {
-    font-family: 'Nunito', ui-sans-serif, system-ui, sans-serif;
+@theme {
+  --font-body: 'Nunito', sans-serif;
+}
+
+body {
+  @apply font-body text-sm;
+  background: var(--bg-color-gradient);
+}
+
+input {
+  @apply w-full rounded-xl bg-amber-50/40 p-0.5 focus:ring-1 focus:ring-cyan-500 focus:outline-none;
+
+  &:checked {
+    @apply text-amber-300;
   }
+}
+
+fieldset {
+  @apply rounded-xl border border-white p-1.5;
+}
+
+button {
+  @apply rounded-xl bg-amber-600 p-2.5 transition-all duration-300;
+
+  &:disabled {
+    @apply cursor-not-allowed text-gray-500;
+  }
+
+  @media (hover: hover) {
+    &:not(:disabled):hover {
+      @apply cursor-pointer bg-amber-500;
+    }
+  }
+}
+
+.pd-base {
+  padding: var(--padding-base);
+}
+
+.form {
+  @apply flex h-[700px] min-h-[60%] w-[650px] max-w-[90%] flex-col justify-center gap-2 rounded-lg bg-lime-50/10 p-2.5 text-amber-50 shadow-2xl;
 }
 
 .icon {
   @apply size-[30px];
 }
 
-.pd-base {
-  padding: var(--padding-base);
+.group-col {
+  @apply flex flex-col;
+}
+
+.error {
+  @apply h-[14px] w-full text-xs break-words text-red-500;
+}
+
+.sm-w-input {
+  @apply w-[20px];
+}
+
+.md-w-input {
+  @apply w-[520px];
 }

@@ -1,5 +1,5 @@
+import { type FC } from 'react';
 import { gh, rs } from '@/assets/images';
-import type { FC } from 'react';
 
 export const Footer: FC = () => {
   return (

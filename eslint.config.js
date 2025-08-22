@@ -48,6 +48,7 @@ export default tseslint.config([
       'react/self-closing-comp': 'error',
       ...react.configs.recommended.rules,
       ...react.configs['jsx-runtime'].rules,
+      'react/no-children-prop': 'off',
       '@typescript-eslint/no-empty-object-type': 'off',
       '@typescript-eslint/no-misused-promises': 'off',
       '@typescript-eslint/no-floating-promises': 'off',

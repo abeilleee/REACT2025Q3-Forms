@@ -1,32 +1,31 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { PLACEHOLDER, VALID_EXTENSIONS } from '@/features/lib/constants';
-import { countries } from '@/features/lib/countries';
-import { schema } from '@/features/lib/schema';
-
-interface FormValues {
-  name: string;
-  age: number;
-  email: string;
-  password: string;
-  secondPassword: string;
-  gender: string;
-  country: string;
-  terms: true;
-  image: FileList;
-}
+import {
+  countries,
+  PLACEHOLDER,
+  schema,
+  VALID_EXTENSIONS,
+  type FormValues,
+} from '@/features/lib';
+import { useFormStore } from '@/shared/model';
 
 export const ReactHookForm = () => {
   const {
     register,
+    handleSubmit,
     formState: { errors, isValid },
   } = useForm<FormValues>({
     resolver: yupResolver(schema),
     mode: 'onChange',
   });
+  const { setControlledData } = useFormStore();
+
+  const onSubmit = (data: FormValues) => {
+    setControlledData(data);
+  };
 
   return (
-    <form className="form">
+    <form className="form" onSubmit={handleSubmit(onSubmit)}>
       <h3>Controlled Form</h3>
       <div className="group-col">
         <label htmlFor="name">Name:</label>

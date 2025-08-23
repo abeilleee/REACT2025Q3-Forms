@@ -54,6 +54,7 @@ export default tseslint.config([
       '@typescript-eslint/no-floating-promises': 'off',
       '@typescript-eslint/only-throw-error': 'off',
       '@typescript-eslint/restrict-template-expressions': 'off',
+      '@typescript-eslint/prefer-promise-reject-errors': 'off',
       '@typescript-eslint/ban-types': 'off',
       'import/order': [
         'error',

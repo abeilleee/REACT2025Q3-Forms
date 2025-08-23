@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import {
+  getFileInBase64,
   PLACEHOLDER,
   schema,
   VALID_EXTENSIONS,
@@ -19,8 +20,11 @@ export const ReactHookForm = () => {
   });
   const { setControlledData, countries } = useFormStore();
 
-  const onSubmit = (data: FormValues) => {
-    setControlledData(data);
+  const onSubmit = async (data: FormValues) => {
+    const fileList = data.image;
+    const img = await getFileInBase64(fileList[0]);
+    const dataForStore = { ...data, image: img };
+    setControlledData(dataForStore);
   };
 
   return (

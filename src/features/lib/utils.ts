@@ -51,3 +51,25 @@ export const parseDataToFormValues = (data: Record<string, unknown>) => {
     image: data.image,
   } as FormValues;
 };
+
+export const getFileInBase64 = async (file: File): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      const result = reader.result;
+
+      if (typeof result === 'string') {
+        resolve(result);
+      }
+    };
+
+    reader.onerror = (error) => reject(error);
+  });
+};
+
+export const transferToFileList = (data: File) => {
+  const dataTransfer = new DataTransfer();
+  dataTransfer.items.add(data);
+  return dataTransfer.files;
+};

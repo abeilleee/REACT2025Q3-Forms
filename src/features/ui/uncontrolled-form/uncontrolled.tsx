@@ -1,7 +1,9 @@
 import { useRef, useState, type FormEvent } from 'react';
 import {
+  getFileInBase64,
   parseDataToFormValues,
   PLACEHOLDER,
+  transferToFileList,
   VALID_EXTENSIONS,
   validate,
   type ReturnedErrors,
@@ -19,10 +21,20 @@ export const UncontrolledForm = () => {
     if (formRef.current) {
       const formData = new FormData(formRef.current);
       const data = Object.fromEntries(formData.entries());
-      const validationResult = await validate(parseDataToFormValues(data));
+      const parsedData = parseDataToFormValues(data);
+
+      if (data.image instanceof File) {
+        const imageFileList = transferToFileList(data.image);
+        parsedData.image = imageFileList;
+      }
+
+      const validationResult = await validate(parsedData);
 
       if (validationResult.result) {
-        setUncontrolledData(parseDataToFormValues(data));
+        const imgFile = data.image as File;
+        const img = await getFileInBase64(imgFile);
+        const dataForStore = { ...parsedData, image: img };
+        setUncontrolledData(dataForStore);
       }
 
       setErrors(validationResult.errors);
@@ -110,7 +122,7 @@ export const UncontrolledForm = () => {
               type="radio"
               id="male"
               value="male"
-              name="male"
+              name="gender"
             />
           </div>
           <div className="flex gap-3.5 accent-amber-600">
@@ -118,7 +130,7 @@ export const UncontrolledForm = () => {
             <input
               className="sm-w-input"
               type="radio"
-              name="female"
+              name="gender"
               id="female"
               value="female"
             />

@@ -1,15 +1,17 @@
 import { create } from 'zustand';
 import { countries, type FormValues } from '@/features/lib';
 
+export type StoredData = Omit<FormValues, 'image'> & { image: string };
+
 interface Store {
-  controlledData: FormValues[];
-  unControlledData: FormValues[];
+  controlledData: StoredData[];
+  unControlledData: StoredData[];
   countries: string[];
 }
 
 interface Actions {
-  setControlledData: (data: FormValues) => void;
-  setUncontrolledData: (data: FormValues) => void;
+  setControlledData: (data: StoredData) => void;
+  setUncontrolledData: (data: StoredData) => void;
 }
 
 export const useFormStore = create<Store & Actions>((set) => ({
@@ -17,12 +19,12 @@ export const useFormStore = create<Store & Actions>((set) => ({
   unControlledData: [],
   countries: countries,
 
-  setControlledData: (data: FormValues) =>
+  setControlledData: (data: StoredData) =>
     set((state) => ({
       controlledData: [...state.controlledData, data],
     })),
 
-  setUncontrolledData: (data: FormValues) =>
+  setUncontrolledData: (data: StoredData) =>
     set((state) => ({
       unControlledData: [...state.controlledData, data],
     })),

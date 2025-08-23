@@ -13,6 +13,7 @@ export const enum PLACEHOLDER {
 export const VALID_EXTENSIONS = ['image/png', 'image/jpeg'];
 
 export const enum ERRORS {
+  DEFAULT_ERROR = 'An unexpected error',
   REQUIRED_FIELD = 'Required field',
   NAME_UPPER_CASE = 'The first letter of the name must be uppercased',
   AGE_NUMBER_ONLY = 'Age must be a number',

@@ -1,7 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import {
-  countries,
   PLACEHOLDER,
   schema,
   VALID_EXTENSIONS,
@@ -18,7 +17,7 @@ export const ReactHookForm = () => {
     resolver: yupResolver(schema),
     mode: 'onChange',
   });
-  const { setControlledData } = useFormStore();
+  const { setControlledData, countries } = useFormStore();
 
   const onSubmit = (data: FormValues) => {
     setControlledData(data);
@@ -26,7 +25,7 @@ export const ReactHookForm = () => {
 
   return (
     <form className="form" onSubmit={handleSubmit(onSubmit)}>
-      <h3>Controlled Form</h3>
+      <h3 className="text-center">Controlled Form</h3>
       <div className="group-col">
         <label htmlFor="name">Name:</label>
         <input
@@ -103,6 +102,7 @@ export const ReactHookForm = () => {
               type="radio"
               {...register('gender')}
               id="male"
+              value="male"
             />
           </div>
           <div className="flex gap-3.5 accent-amber-600">
@@ -111,6 +111,7 @@ export const ReactHookForm = () => {
               className="sm-w-input"
               type="radio"
               id="female"
+              value="female"
               {...register('gender')}
             />
           </div>

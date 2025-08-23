@@ -9,3 +9,10 @@ export interface FormValues {
   terms: true;
   image: FileList;
 }
+
+export type ReturnedErrors = Partial<Record<keyof FormValues, string>>;
+
+export type ReturnedResult = {
+  result: boolean;
+  errors: ReturnedErrors[];
+};

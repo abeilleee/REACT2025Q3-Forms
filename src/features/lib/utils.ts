@@ -1,4 +1,7 @@
+import { ValidationError } from 'yup';
 import { IMG_MAX_SIZE_BYTES, VALID_EXTENSIONS } from './constants';
+import { schema } from './schema';
+import type { FormValues, ReturnedResult } from './types';
 
 export const isValidType = (files: unknown) => {
   if (!(files instanceof FileList)) {
@@ -16,4 +19,35 @@ export const isValidSize = (files: unknown) => {
   }
 
   return Array.from(files).every((file) => file.size <= IMG_MAX_SIZE_BYTES);
+};
+
+export const validate = async (data: FormValues): Promise<ReturnedResult> => {
+  try {
+    await schema.validate(data, { abortEarly: false });
+    return { result: true, errors: [] };
+  } catch (error) {
+    console.error(error);
+    if (error instanceof ValidationError) {
+      const errors = error.inner.map((err) => {
+        return { [err.path || 'nopath']: err.message };
+      });
+      return { result: false, errors: errors };
+    } else {
+      return { result: false, errors: [] };
+    }
+  }
+};
+
+export const parseDataToFormValues = (data: Record<string, unknown>) => {
+  return {
+    name: data.name,
+    age: Number(data.age),
+    email: data.email,
+    password: data.password,
+    secondPassword: data.secondPassword,
+    gender: data.gender,
+    country: data.country,
+    terms: data.terms && true,
+    image: data.image,
+  } as FormValues;
 };

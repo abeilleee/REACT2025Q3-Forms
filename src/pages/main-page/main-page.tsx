@@ -7,17 +7,17 @@ import { Tile } from '@/widgets';
 type FormType = 'controlled' | 'uncontrolled' | null;
 
 export const MainPage = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [selectedForm, setSelectedForm] = useState<FormType>(null);
-  const { controlledData, unControlledData } = useFormStore();
+  const { controlledData, unControlledData, isOpen, toggleIsOpen } =
+    useFormStore();
 
   const onClick = (form: FormType) => {
-    setIsOpen(true);
+    toggleIsOpen();
     setSelectedForm(form);
   };
 
   const onClose = () => {
-    setIsOpen(false);
+    toggleIsOpen();
   };
 
   useEffect(() => {

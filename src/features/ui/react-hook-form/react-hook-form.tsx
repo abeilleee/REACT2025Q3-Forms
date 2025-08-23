@@ -20,7 +20,7 @@ export const ReactHookForm = () => {
     resolver: yupResolver(schema),
     mode: 'onChange',
   });
-  const { setControlledData, countries } = useFormStore();
+  const { setControlledData, toggleIsOpen, countries } = useFormStore();
   const passwordValue = watch('password');
 
   const onSubmit = async (data: FormValues) => {
@@ -28,6 +28,7 @@ export const ReactHookForm = () => {
     const img = await getFileInBase64(fileList[0]);
     const dataForStore = { ...data, image: img };
     setControlledData(dataForStore);
+    toggleIsOpen();
   };
 
   return (

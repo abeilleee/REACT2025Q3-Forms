@@ -14,7 +14,7 @@ import { useFormStore } from '@/shared/model';
 export const UncontrolledForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-  const { countries, setUncontrolledData } = useFormStore();
+  const { countries, setUncontrolledData, toggleIsOpen } = useFormStore();
   const [errors, setErrors] = useState<ReturnedErrors[]>([]);
 
   const handleSubmit = async (event: FormEvent) => {
@@ -37,6 +37,7 @@ export const UncontrolledForm = () => {
         const img = await getFileInBase64(imgFile);
         const dataForStore = { ...parsedData, image: img };
         setUncontrolledData(dataForStore);
+        toggleIsOpen();
       }
 
       setErrors(validationResult.errors);

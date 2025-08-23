@@ -30,7 +30,10 @@ export const MainPage = () => {
 
   return (
     <>
-      <div className="pd-base flex gap-3.5 text-amber-50">
+      <div
+        className="pd-base flex gap-3.5 text-amber-50"
+        data-testid={'container'}
+      >
         <button onClick={() => onClick('controlled')}>React hook form</button>
         <button onClick={() => onClick('uncontrolled')}>
           Uncontrolled form

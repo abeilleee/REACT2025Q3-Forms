@@ -31,7 +31,11 @@ export const ReactHookForm = () => {
   };
 
   return (
-    <form className="form" onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className="form"
+      onSubmit={handleSubmit(onSubmit)}
+      data-testid={'controlled form'}
+    >
       <h3 className="text-center">Controlled Form</h3>
       <div className="group-col">
         <label htmlFor="name">Name:</label>
@@ -114,7 +118,7 @@ export const ReactHookForm = () => {
             />
           </div>
           <div className="flex gap-3.5 accent-amber-600">
-            <label htmlFor="fenale">Female</label>
+            <label htmlFor="female">Female</label>
             <input
               className="sm-w-input"
               type="radio"

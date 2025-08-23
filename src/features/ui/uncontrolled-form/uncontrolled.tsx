@@ -44,7 +44,12 @@ export const UncontrolledForm = () => {
   };
 
   return (
-    <form className="form" ref={formRef} onSubmit={handleSubmit}>
+    <form
+      className="form"
+      ref={formRef}
+      onSubmit={handleSubmit}
+      data-testid={'uncontrolled form'}
+    >
       <h3 className="text-center">Uncontrolled Form</h3>
       <div className="group-col">
         <label htmlFor="name">Name:</label>

@@ -4,9 +4,9 @@ import { Footer, Header } from '@/shared/ui';
 
 export const Layout: FC = () => {
   return (
-    <section className="flex min-h-screen flex-col">
+    <section className="flex min-h-screen flex-col" data-testid={'section'}>
       <Header />
-      <main className="grow">
+      <main className="grow" data-testid={'main'}>
         <Outlet />
       </main>
       <Footer />

@@ -3,15 +3,20 @@ import type { StoredData } from '@/shared/model/store';
 
 type FormCardProps = {
   cardData: StoredData;
-  className?: string;
+  newData: boolean;
 };
 
-export const FormCard: FC<FormCardProps> = ({ cardData }) => {
+export const FormCard: FC<FormCardProps> = ({ cardData, newData }) => {
   const { name, age, email, password, gender, country, terms, image } =
     cardData;
 
   return (
-    <div className="pd-base flex h-[580px] w-[350px] flex-col justify-center gap-2 rounded-lg bg-blue-900/50 p-2 text-amber-50 shadow-xl">
+    <div className="pd-base relative flex h-[580px] w-[350px] flex-col justify-center gap-2 rounded-lg bg-blue-900/50 p-2 text-amber-50 shadow-xl">
+      {newData && (
+        <p className="bold absolute top-2 right-2 text-2xl font-bold text-shadow-(--text-shadow)">
+          New
+        </p>
+      )}
       <div>
         <span>Name: </span>
         <span>{name}</span>

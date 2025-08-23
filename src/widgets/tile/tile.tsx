@@ -14,7 +14,9 @@ export const Tile: FC<TileProps> = ({ data, title }) => {
       {data && (
         <div className="flex flex-col gap-5">
           {data.map((cardData: StoredData, idx: number) => {
-            return <FormCard cardData={cardData} key={idx} />;
+            return (
+              <FormCard cardData={cardData} key={idx} newData={idx === 0} />
+            );
           })}
         </div>
       )}

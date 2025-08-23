@@ -21,11 +21,11 @@ export const useFormStore = create<Store & Actions>((set) => ({
 
   setControlledData: (data: StoredData) =>
     set((state) => ({
-      controlledData: [...state.controlledData, data],
+      controlledData: [data, ...state.controlledData],
     })),
 
   setUncontrolledData: (data: StoredData) =>
     set((state) => ({
-      unControlledData: [...state.controlledData, data],
+      unControlledData: [data, ...state.unControlledData],
     })),
 }));

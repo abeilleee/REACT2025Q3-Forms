@@ -2,8 +2,17 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { MainPage } from './main-page';
 import userEvent from '@testing-library/user-event';
+import { useFormStore } from '@/shared/model';
 
 describe('Main page tests', () => {
+  const initialState = {
+    isOpen: false,
+  };
+
+  beforeEach(() => {
+    useFormStore.setState(initialState);
+  });
+
   test('should render main-page correctly', () => {
     render(
       <MemoryRouter>
@@ -57,6 +66,6 @@ describe('Main page tests', () => {
     });
 
     await user.click(button);
-    expect(screen.queryByTestId('controlled form')).toBeInTheDocument();
+    expect(screen.getByTestId('controlled form')).toBeInTheDocument();
   });
 });

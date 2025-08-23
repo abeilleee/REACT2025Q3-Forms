@@ -57,8 +57,12 @@ export const PasswordIndicator: FC<PasswordIndicatorProps> = ({ password }) => {
   }, [password, calculateStrength]);
 
   return (
-    <div className="h-2.5 w-full overflow-hidden rounded-md bg-gray-400/50">
+    <div
+      className="h-2.5 w-full overflow-hidden rounded-md bg-gray-400/50"
+      data-testid="indicator"
+    >
       <div
+        data-testid="bar"
         className={`h-2.5 rounded-md transition-all duration-300 ${color}`}
         style={{ width: `${width}%` }}
       />

@@ -1,8 +1,8 @@
 import { useState } from 'react';
-
 import { ReactHookForm, UncontrolledForm } from '@/features/ui';
 import { useFormStore } from '@/shared/model';
-import { FormCard, Modal } from '@/shared/ui';
+import { Modal } from '@/shared/ui';
+import { Tile } from '@/widgets';
 
 type FormType = 'controlled' | 'uncontrolled' | null;
 
@@ -39,29 +39,9 @@ export const MainPage = () => {
           }
         />
       </div>
-
-      <div className="pd-base flex justify-around">
-        <div className="flex flex-col gap-3.5">
-          <h3 className="text-center text-white">Controlled Form</h3>
-          {controlledData && (
-            <div className="flex flex-col gap-5">
-              {controlledData.map((data, idx) => {
-                return <FormCard cardData={data} key={idx} />;
-              })}
-            </div>
-          )}
-        </div>
-
-        <div className="flex flex-col gap-3.5">
-          <h3 className="text-center text-white">Uncontrolled Form</h3>
-          {unControlledData && (
-            <div className="flex flex-col gap-5">
-              {unControlledData.map((data, idx) => {
-                return <FormCard cardData={data} key={idx} />;
-              })}
-            </div>
-          )}
-        </div>
+      <div className="pd-base flex flex-wrap justify-around">
+        <Tile data={controlledData} title="Controlled Form" />
+        <Tile data={unControlledData} title="Uncontrolled Form" />
       </div>
     </>
   );

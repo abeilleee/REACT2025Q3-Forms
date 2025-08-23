@@ -13,7 +13,10 @@ export const FormCard: FC<FormCardProps> = ({ cardData, newData }) => {
   return (
     <div className="pd-base relative flex h-[580px] w-[350px] flex-col justify-center gap-2 rounded-lg bg-blue-900/50 p-2 text-amber-50 shadow-xl">
       {newData && (
-        <p className="bold absolute top-2 right-2 text-2xl font-bold text-shadow-(--text-shadow)">
+        <p
+          className="bold absolute top-2 right-2 text-2xl font-bold text-shadow-(--text-shadow)"
+          data-testid={'new'}
+        >
           New
         </p>
       )}

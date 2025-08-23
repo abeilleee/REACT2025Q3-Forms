@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import { RouterProvider } from 'react-router';
 import { createBrowserRouter } from 'react-router-dom';
-import { MainPage } from '@/pages';
+import { MainPage, NotFoundPage } from '@/pages';
 import { Layout } from '@/shared/ui';
 
 export const Router: FC = () => {
@@ -14,6 +14,10 @@ export const Router: FC = () => {
           element: <MainPage />,
         },
       ],
+    },
+    {
+      path: '*',
+      element: <NotFoundPage />,
     },
   ]);
 

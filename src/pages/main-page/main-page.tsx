@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ReactHookForm, UncontrolledForm } from '@/features/ui';
 import { useFormStore } from '@/shared/model';
 import { Modal } from '@/shared/ui';
@@ -19,6 +19,14 @@ export const MainPage = () => {
   const onClose = () => {
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isOpen]);
 
   return (
     <>

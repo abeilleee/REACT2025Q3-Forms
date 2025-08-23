@@ -8,10 +8,12 @@ import {
   validate,
   type ReturnedErrors,
 } from '@/features/lib';
+import { PasswordIndicator } from '@/features/ui';
 import { useFormStore } from '@/shared/model';
 
 export const UncontrolledForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
   const { countries, setUncontrolledData } = useFormStore();
   const [errors, setErrors] = useState<ReturnedErrors[]>([]);
 
@@ -91,7 +93,9 @@ export const UncontrolledForm = () => {
             type="password"
             placeholder={PLACEHOLDER.PASSWORD}
             autoComplete="password"
+            ref={passwordRef}
           />
+          <PasswordIndicator password={passwordRef.current?.value || ''} />
           <p className="error">
             {errors.find((err) => 'password' in err)?.password}
           </p>

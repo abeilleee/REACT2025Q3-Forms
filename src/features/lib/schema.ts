@@ -17,8 +17,11 @@ export const schema = yup.object().shape({
   password: yup
     .string()
     .required(ERRORS.REQUIRED_FIELD)
-    .min(MIN_PASSWORD_LENGTH)
-    .matches(PASSWORD_REGEX),
+    .matches(PASSWORD_REGEX)
+    .matches(/[a-z]/, ERRORS.PASSWORD_LOW_LETTER)
+    .matches(/[A-Z]/, ERRORS.PASSWORD_UPPER_LETTER)
+    .matches(/\d/, ERRORS.PASSWORD_NUMBER)
+    .min(MIN_PASSWORD_LENGTH),
   secondPassword: yup
     .string()
     .required(ERRORS.REQUIRED_FIELD)

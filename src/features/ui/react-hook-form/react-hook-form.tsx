@@ -7,6 +7,7 @@ import {
   VALID_EXTENSIONS,
   type FormValues,
 } from '@/features/lib';
+import { PasswordIndicator } from '@/features/ui';
 import { useFormStore } from '@/shared/model';
 
 export const ReactHookForm = () => {
@@ -14,11 +15,13 @@ export const ReactHookForm = () => {
     register,
     handleSubmit,
     formState: { errors, isValid },
+    watch,
   } = useForm<FormValues>({
     resolver: yupResolver(schema),
     mode: 'onChange',
   });
   const { setControlledData, countries } = useFormStore();
+  const passwordValue = watch('password');
 
   const onSubmit = async (data: FormValues) => {
     const fileList = data.image;
@@ -78,6 +81,7 @@ export const ReactHookForm = () => {
             placeholder={PLACEHOLDER.PASSWORD}
             autoComplete="password"
           />
+          <PasswordIndicator password={passwordValue} />
           <p className="error">{errors.password && errors.password.message}</p>
         </div>
 

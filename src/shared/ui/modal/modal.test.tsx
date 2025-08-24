@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
-import { Modal, type ModalProps } from './modal';
 import userEvent from '@testing-library/user-event';
 import { UncontrolledForm } from '@/features/ui';
+import { Modal, type ModalProps } from './modal';
 
 describe('Modal tests', () => {
   const mockOnClose = vi.fn();
@@ -25,7 +25,7 @@ describe('Modal tests', () => {
     expect(screen.getByText('Modal Content')).toBeInTheDocument();
   });
 
-  test('should focus on the first input', async () => {
+  test('should focus on the first input', () => {
     render(
       <Modal isOpen onClose={mockOnClose} children={<UncontrolledForm />} />
     );

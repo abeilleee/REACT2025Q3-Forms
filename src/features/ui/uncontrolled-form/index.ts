@@ -1,1 +1,1 @@
-export { UncontrolledForm } from './uncontrolled';
+export { UncontrolledForm } from './uncontrolled-form';

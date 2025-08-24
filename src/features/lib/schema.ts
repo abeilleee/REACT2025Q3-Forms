@@ -38,6 +38,10 @@ export const schema = yup.object().shape({
         input instanceof FileList && input.length > 0
     )
     .required(ERRORS.REQUIRED_FIELD)
-    .test('filetype', ERRORS.IMAGE_TYPE, isValidType)
-    .test('fileType', ERRORS.IMAGE_SIZE, isValidSize),
+    .test('fileType', ERRORS.IMAGE_TYPE, (value) => {
+      return isValidType(value);
+    })
+    .test('fileSize', ERRORS.IMAGE_SIZE, (value) => {
+      return isValidSize(value);
+    }),
 });

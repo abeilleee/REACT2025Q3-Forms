@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import { FormCard } from './form-card';
 import { mockFormData } from '@/app/tests/mock';
+import { FormCard } from './form-card';
 
 describe('Form card tests', () => {
   test('should render all data correctly', () => {

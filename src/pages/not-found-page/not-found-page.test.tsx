@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
-import { NotFoundPage } from './not-found-page';
-import { MemoryRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
+import { MemoryRouter } from 'react-router-dom';
+import { NotFoundPage } from './not-found-page';
 
 const navigateMock = vi.fn();
 

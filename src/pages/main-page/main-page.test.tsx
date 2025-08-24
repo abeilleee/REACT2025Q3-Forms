@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
-import { MainPage } from './main-page';
 import userEvent from '@testing-library/user-event';
+import { MemoryRouter } from 'react-router-dom';
 import { useFormStore } from '@/shared/model';
+import { MainPage } from './main-page';
 
 describe('Main page tests', () => {
   const initialState = {

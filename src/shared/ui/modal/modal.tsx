@@ -27,7 +27,7 @@ export const Modal: FC<ModalProps> = ({ children, isOpen, onClose }) => {
   return createPortal(
     <div
       className="absolute top-0 left-0 flex h-full w-full flex-col items-center justify-center backdrop-blur-sm"
-      onClick={(e) => handleBackdropClick(e)}
+      onMouseDown={(e) => handleBackdropClick(e)}
       onKeyDown={(e) => handleKeyClose(e)}
       data-testid={'backdrop'}
     >

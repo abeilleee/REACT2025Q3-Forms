@@ -44,4 +44,13 @@ describe('Modal tests', () => {
 
     expect(mockOnClose).toHaveBeenCalled();
   });
+
+  test('should call onClose when Escape is pressed', async () => {
+    const user = userEvent.setup();
+    render(<Modal {...mockProps} />);
+
+    await user.keyboard('{Escape}');
+
+    expect(mockOnClose).toHaveBeenCalled();
+  });
 });

@@ -165,7 +165,7 @@ export const UncontrolledForm = () => {
       <div className="group-col">
         <label htmlFor="image">Image:</label>
         <input
-          className="md-w-input"
+          className="file-input"
           type="file"
           id="image"
           name="image"

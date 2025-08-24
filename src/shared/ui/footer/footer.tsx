@@ -3,7 +3,7 @@ import { gh, rs } from '@/assets/images';
 
 export const Footer: FC = () => {
   return (
-    <footer className="pd-base flex h-[60px] items-center justify-between">
+    <footer className="pd-base flex h-[60px] items-center justify-between bg-amber-50/30">
       <a href="https://rs.school/" target="_blank" rel="noreferrer">
         <img src={rs} className="icon" alt="icon" />
       </a>

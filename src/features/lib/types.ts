@@ -14,5 +14,5 @@ export type ReturnedErrors = Partial<Record<keyof FormValues, string>>;
 
 export type ReturnedResult = {
   result: boolean;
-  errors: ReturnedErrors[];
+  errors: ReturnedErrors;
 };

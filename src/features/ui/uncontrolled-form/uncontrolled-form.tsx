@@ -15,7 +15,7 @@ export const UncontrolledForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const { countries, setUncontrolledData, toggleIsOpen } = useFormStore();
-  const [errors, setErrors] = useState<ReturnedErrors[]>([]);
+  const [errors, setErrors] = useState<ReturnedErrors>({});
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -62,7 +62,7 @@ export const UncontrolledForm = () => {
           placeholder={PLACEHOLDER.NAME}
           autoComplete="name"
         />
-        <p className="error">{errors.find((err) => 'name' in err)?.name}</p>
+        <p className="error">{errors.name}</p>
       </div>
 
       <div className="group-col">
@@ -74,7 +74,7 @@ export const UncontrolledForm = () => {
           placeholder={PLACEHOLDER.AGE}
           autoComplete="age"
         />
-        <p className="error">{errors.find((err) => 'age' in err)?.age}</p>
+        <p className="error">{errors.age}</p>
       </div>
 
       <div className="group-col">
@@ -86,7 +86,7 @@ export const UncontrolledForm = () => {
           placeholder={PLACEHOLDER.EMAIL}
           autoComplete="email"
         />
-        <p className="error">{errors.find((err) => 'email' in err)?.email}</p>
+        <p className="error">{errors.email}</p>
       </div>
 
       <fieldset>
@@ -102,9 +102,7 @@ export const UncontrolledForm = () => {
             ref={passwordRef}
           />
           <PasswordIndicator password={passwordRef.current?.value || ''} />
-          <p className="error">
-            {errors.find((err) => 'password' in err)?.password}
-          </p>
+          <p className="error">{errors.password}</p>
         </div>
 
         <div className="group-col">
@@ -116,9 +114,7 @@ export const UncontrolledForm = () => {
             id="secondPassword"
             autoComplete="secondPassword"
           />
-          <p className="error">
-            {errors.find((err) => 'secondPassword' in err)?.secondPassword}
-          </p>
+          <p className="error">{errors.secondPassword}</p>
         </div>
       </fieldset>
 
@@ -146,7 +142,7 @@ export const UncontrolledForm = () => {
             />
           </div>
         </div>
-        <p className="error">{errors.find((err) => 'gender' in err)?.gender}</p>
+        <p className="error">{errors.gender}</p>
       </fieldset>
 
       <div className="flex-col">
@@ -159,7 +155,7 @@ export const UncontrolledForm = () => {
             name="terms"
           />
         </div>
-        <p className="error">{errors.find((err) => 'terms' in err)?.terms}</p>
+        <p className="error">{errors.terms}</p>
       </div>
 
       <div className="group-col">
@@ -171,7 +167,7 @@ export const UncontrolledForm = () => {
           name="image"
           accept={VALID_EXTENSIONS.join(',')}
         />
-        <p className="error">{errors.find((err) => 'image' in err)?.image}</p>
+        <p className="error">{errors.image}</p>
       </div>
 
       <div className="group-col">
@@ -182,9 +178,7 @@ export const UncontrolledForm = () => {
             <option key={idx} value={country} />
           ))}
         </datalist>
-        <p className="error">
-          {errors.find((err) => 'country' in err)?.country}
-        </p>
+        <p className="error">{errors.country}</p>
       </div>
 
       <button type="submit">Submit</button>

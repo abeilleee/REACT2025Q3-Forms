@@ -24,16 +24,17 @@ export const isValidSize = (files: unknown) => {
 export const validate = async (data: FormValues): Promise<ReturnedResult> => {
   try {
     await schema.validate(data, { abortEarly: false });
-    return { result: true, errors: [] };
+    return { result: true, errors: {} };
   } catch (error) {
     console.error(error);
     if (error instanceof ValidationError) {
-      const errors = error.inner.map((err) => {
-        return { [err.path || 'nopath']: err.message };
-      });
-      return { result: false, errors: errors };
+      const errors = error.inner.reduce((acc, err) => {
+        const error = { [err.path || 'nopath']: err.message };
+        return { ...acc, ...error };
+      }, {});
+      return { result: false, errors: { ...errors } };
     } else {
-      return { result: false, errors: [] };
+      return { result: false, errors: {} };
     }
   }
 };

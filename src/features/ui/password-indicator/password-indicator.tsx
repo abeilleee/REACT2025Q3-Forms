@@ -51,8 +51,7 @@ export const PasswordIndicator: FC<PasswordIndicatorProps> = ({ password }) => {
   }, [calculateStrength]);
 
   useEffect(() => {
-    const newStrength = calculateStrength;
-    const newWidth = (newStrength / STRENGTH.VERY_STRONG) * 100;
+    const newWidth = (calculateStrength / STRENGTH.VERY_STRONG) * 100;
     setWidth(newWidth);
   }, [password, calculateStrength]);
 
